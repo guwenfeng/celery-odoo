@@ -9,8 +9,7 @@ from openerp.modules import load_information_from_description_file
 
 _logger = logging.getLogger("Celery")
 BASE_VERSION = load_information_from_description_file('base')['version']
-def str2tuple(s):
-    return eval('tuple(%s)' % (s or ''))
+
 
 @celery.task
 def execute():

@@ -43,11 +43,13 @@ class CeleryTask(object):
                     elif api_name == 'one':
                         obj_ids = [obj.id]
                     kwargs['context'] = context
-                    dbname = cr.dbname
                 else:
                     arglist.pop(0)  # Remove self
-                    cr = arglist.pop(1)
-                    uid = arglist.pop(2)
+                    cr = arglist.pop(0)
+                    uid = arglist.pop(0)
+                    obj_ids = arglist.pop(0)
+                    if not kwargs['context']:
+                        kwargs['context']={}
                 dbname = cr.dbname
                 fname = f.__name__
                 # Pass OpenERP server config to the worker
