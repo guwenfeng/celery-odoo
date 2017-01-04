@@ -11,14 +11,21 @@ Celery Queue
 
 一 、 准备工作 
 1、安装redis,如 redis://192.168.1.58:6379/ 
+
 2、pip install 'celery[redis]' 
+
 3、安装celery_queue模块，我的物理路径是/data/rcerp/odoo8/openerp/hxy_addons/celery_queue 
+
 4、启动celery work
 
 1)配置PYTHONPATH环境变量，指定odoo的根目录，也就是openerp的上一级目录
+
 export PYTHONPATH="/data/rcerp/odoo8"
+
 2）进入celery_queue目录的上一级目录中，启动work
+
 cd /data/rcerp/odoo8/openerp/hxy_addons
+
 nohup celery -B -A celery_queue  worker -c 1 -Q openerp >>/data/rcerp/celery_console.log &
 
 
@@ -30,9 +37,11 @@ from openerp.hxy_addons.celery_queue.decorators import CeleryTask
 
 @CeleryTask() 
 def do_run_compute_stock_amount_qty_task(self, cr, uid, ids, context=None):
+
     print '1234567890' return True
     
 1）导入CeleryTask 
+
 2）添加装饰器@CeleryTask()
 
 
@@ -49,6 +58,8 @@ CELERY_IMPORTS = ( # 指定导入的任务模块
 }
 }
 
+
+
 2）写具体方法，如task_1.py文件。注意该文件中装饰器名称为@celery.task，以防与@CeleryTask()混淆。
 定时任务执行只支持单个DB，多个DB执行的方法还未想到解决办法。
 
@@ -58,18 +69,6 @@ CELERY_IMPORTS = ( # 指定导入的任务模块
 1、配置环境变量
 
 [rcerp@iZ258dzcy2jZ ~]$ more .bash_profile 
-# .bash_profile
-
-# Get the aliases and functions
-if [ -f ~/.bashrc ]; then
-	. ~/.bashrc
-fi
-
-# User specific environment and startup programs
-
-PATH=$PATH:$HOME/.local/bin:$HOME/bin
-
-export PATH
 
 PYTHONPATH="/data/rcerp/odoo8"
 
