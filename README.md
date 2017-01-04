@@ -49,7 +49,7 @@ def do_run_compute_stock_amount_qty_task(self, cr, uid, ids, context=None):
 1）配置
 CELERY_IMPORTS = ( # 指定导入的任务模块
 'celery_queue.schedule_task.task_1', 'celery_queue.schedule_task.task_2', 'celery_queue.tasks' )
-#schedules CELERYBEAT_SCHEDULE = {
+\#schedules CELERYBEAT_SCHEDULE = {
 'add-every-30-seconds': {
 'task': 'celery_queue.schedule_task.task_1.execute', 'schedule': timedelta(seconds=30), # 每 30 秒执行一次 'args': () # 任务函数参数
 }, 
@@ -76,7 +76,7 @@ export PYTHONPATH
 
 2、启动celery work
  more start_celery.sh 
-#!/bin/bash
+\#!/bin/bash
 cd /data/rcerp/odoo8/openerp/hxy_addons
 nohup celery -B -A celery_queue  worker -c 1 -Q openerp >>/data/rcerp/celery_console.log &
 
