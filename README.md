@@ -36,9 +36,12 @@ nohup celery -B -A celery_queue  worker -c 1 -Q openerp >>/data/rcerp/celery_con
 from openerp.hxy_addons.celery_queue.decorators import CeleryTask 
 
 @CeleryTask() 
+
 def do_run_compute_stock_amount_qty_task(self, cr, uid, ids, context=None):
 
-    print '1234567890' return True
+   print '1234567890' 
+   
+   return True
     
 1）导入CeleryTask 
 
@@ -77,6 +80,7 @@ CELERY_IMPORTS = (
 'args': (3, 7) 
 
 \# 任务函数参数
+
 }
 }
 
