@@ -46,21 +46,37 @@ def do_run_compute_stock_amount_qty_task(self, cr, uid, ids, context=None):
 
 
 2、定时任务调用
+
 1）配置
-CELERY_IMPORTS = ( # 指定导入的任务模块
+
+CELERY_IMPORTS = ( 
+
+\# 指定导入的任务模块
+
 'celery_queue.schedule_task.task_1', 'celery_queue.schedule_task.task_2', 'celery_queue.tasks' )
 
  CELERYBEAT_SCHEDULE = {
  
 'add-every-30-seconds': {
 
-'task': 'celery_queue.schedule_task.task_1.execute', 'schedule': timedelta(seconds=30), # 每 30 秒执行一次 'args': () # 任务函数参数
+'task': 'celery_queue.schedule_task.task_1.execute', 'schedule': timedelta(seconds=30), 
+
+\# 每 30 秒执行一次 
+
+'args': () 
+
+\# 任务函数参数
+
 }, 
 'multiply-at-some-time': {
 
-'task': 'celery_queue.schedule_task.task_2.multiply', 'schedule': crontab(hour=11, minute=25), # 每天早上 11 点 25 分执行一次
+'task': 'celery_queue.schedule_task.task_2.multiply', 'schedule': crontab(hour=11, minute=25), 
 
-'args': (3, 7) # 任务函数参数
+\# 每天早上 11 点 25 分执行一次
+
+'args': (3, 7) 
+
+\# 任务函数参数
 }
 }
 
