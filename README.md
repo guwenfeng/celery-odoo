@@ -3,8 +3,7 @@ Odoo Celery Task
 =============================
 
 
-This project is created to add modules realated with the execution of Odoo tasks in a celery queue
-License: AGPL-3
+
 Celery Queue
 
 背景：公司ODOO运行一年多，随着业务不断迭代，定时任务运行不很稳定，再加上解耦的需要，偶然看到神器celery，便想到odoo与celery结合， 在github看到celery-odoo这个工程，为了自己的业务需要，进行了改造。
