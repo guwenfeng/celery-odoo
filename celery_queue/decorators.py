@@ -48,7 +48,10 @@ class CeleryTask(object):
                     cr = arglist.pop(0)
                     uid = arglist.pop(0)
                     obj_ids = arglist.pop(0)
-                    if not kwargs['context']:
+                    if kwargs.has_key('context'):
+                        if not kwargs['context']:
+                            kwargs['context']={}
+                    else:
                         kwargs['context']={}
                 dbname = cr.dbname
                 fname = f.__name__
