@@ -17,9 +17,9 @@ Celery Queue
 
 4、启动celery work
 
-1)配置PYTHONPATH环境变量，指定odoo的根目录，也就是openerp的上一级目录
+1)配置PYTHONPATH环境变量，指定odoo的根目录，也就是openerp的上一级目录;以及celery_queue的上一级目录
 
-export PYTHONPATH="/data/rcerp/odoo8"
+export PYTHONPATH="/data/rcerp/odoo8:/data/rcerp/odoo8/openerp/hxy_addons"
 
 2）进入celery_queue目录的上一级目录中，启动work
 
